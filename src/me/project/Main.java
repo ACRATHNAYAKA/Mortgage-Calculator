@@ -9,7 +9,7 @@ public class Main {
         double principle = inputs("Principle(Rs.10K-Rs.1M) : ",10000,1000000);
         double annualInterest = inputs("Annual Interrest Rate : ",1,30);
         short years = (short) inputs("Period - ",1,30);
-        double mothlyPayment = monthlyPayment(annualInterest,principle,years);
+        monthlyPayment(annualInterest,principle,years);
 
         paymentShedul(principle,years,annualInterest);
 
@@ -18,7 +18,7 @@ public class Main {
 
     public static double inputs(String message,double minValue, double maxValue){
         Scanner scanner = new Scanner(System.in);
-        double value = 0;
+        double value;
         while (true){
             System.out.print(message);
             value = Double.parseDouble(scanner.nextLine());
@@ -34,8 +34,8 @@ public class Main {
 
     }
 
-    public static double monthlyPayment(double annualInterest, double principle, int years){
-        double monthlyPayment = 0;
+    public static void monthlyPayment(double annualInterest, double principle, int years){
+        double monthlyPayment;
         double monthlyInterest = annualInterest/100/12;
         int installments = years*12;
 
@@ -45,16 +45,15 @@ public class Main {
         NumberFormat currency = NumberFormat.getCurrencyInstance(new Locale("eng", "LK"));
         String formatMonthlyPayment = currency.format(monthlyPayment);
 
-        System.out.println("Mothly Payment : "+formatMonthlyPayment);
+        System.out.println("Monthly Payment : "+formatMonthlyPayment);
 
-        return monthlyPayment;
 
     }
 
     public static void paymentShedul(double princeple, int years, double annualInterest ){
         int installments = years*12;
         double monthlyInterest = annualInterest/100/12;
-        double balance = 0;
+        double balance;
         System.out.println();
         System.out.println("                Payment Schedule    ");
         System.out.println("-----------------------------------------------");
@@ -63,7 +62,7 @@ public class Main {
                     (Math.pow((1+monthlyInterest),installments)-1);
             NumberFormat currency = NumberFormat.getCurrencyInstance(new Locale("eng", "LK"));
             String formatBalance = currency.format(balance);
-            System.out.println("After Complete "+completePayments+" Payment Balance - "+formatBalance);
+            System.out.println("Remaining balance after "+completePayments+" payments: "+formatBalance);
         }
     }
 }
