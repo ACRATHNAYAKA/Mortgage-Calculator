@@ -1,0 +1,13 @@
+# IntelliJ IDEA
+# Ignores IDE settings and project-specific files
+.idea/
+*.iml
+artifacts/
+
+# Java
+# Ignores compiled output
+out/
+build/
+
+# Operating System files
+.DS_Store
